@@ -1,18 +1,19 @@
-mode = "tf"
+AI_FRAMEWORK = "tf"
+AI_MODEL = "yolov8n_float16.tflite"
 
 from networktables import NetworkTables
 import time
 import cv2
 
-if mode == "torch":
+if AI_FRAMEWORK == "torch":
     from ultralytics import YOLO
     import torch
     device = torch.device("cuda:0" if torch.cuda.is_available else "cpu")
     print("Yolo Device:", device)
-    model = YOLO("yolov8n.pt")
+    model = YOLO(AI_MODEL)
     model.to(device=device)
 
-elif mode == "tf":
+elif AI_FRAMEWORK == "tf":
     from tensorflow.lite.python.interpreter import Interpreter
     import numpy as np
 
@@ -24,9 +25,9 @@ NetworkTables.waitForConnectionListenerQueue(1)
 table = NetworkTables.getTable("/RaspberryPI")
 fpsEntry = table.getEntry("FPS")
 statusEntry = table.getEntry("Status")
-modeEntry = table.getEntry("Modo")
+AIFrameworkEntry = table.getEntry("Framework de IA")
 
-modeEntry.setString(mode)
+AIFrameworkEntry.setString(AI_FRAMEWORK)
 statusEntry.setString("INICIALIZANDO...")
 
 # Abre câmera
@@ -35,9 +36,9 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 320)
 statusEntry.setString("Capturando")
 
-if mode == "tf":
+if AI_FRAMEWORK == "tf":
     # Carrega modelo
-    interpreter = Interpreter(model_path="yolov8n_float16.tflite")
+    interpreter = Interpreter(model_path=AI_MODEL)
     interpreter.allocate_tensors()
 
     input_details = interpreter.get_input_details()
@@ -56,9 +57,6 @@ if mode == "tf":
         interpreter.set_tensor(input_details[0]['index'], input_data)
         interpreter.invoke()
 
-        # Aqui você trataria os outputs conforme o seu modelo
-        # Exemplo: detections = interpreter.get_tensor(output_details[0]['index'])
-
         end = time.time()
         fps = 1 / (end - start)
         fps = f"{fps:.2f}"
@@ -69,7 +67,7 @@ if mode == "tf":
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-elif mode == "torch":
+elif AI_FRAMEWORK == "torch":
     while True:
         start = time.time()
         ret, frame = cap.read()
