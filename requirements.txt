@@ -1,0 +1,17 @@
+--index-url https://download.pytorch.org/whl/cu118
+torch
+torchvision
+torchaudio
+
+--index-url https://pypi.org/simple
+opencv-python
+ultralytics
+onnx 
+onnx-tf
+tensorflow
+onnx2tf
+onnx_graphsurgeon
+sng4onnx
+tflite_support
+pynetworktables
+tf-keras

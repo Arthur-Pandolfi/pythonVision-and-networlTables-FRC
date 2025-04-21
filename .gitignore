@@ -1,0 +1,4 @@
+.venv
+.python-version
+models
+yolov8n_float16.tflite
