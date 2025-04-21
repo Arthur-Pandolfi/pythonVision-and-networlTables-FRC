@@ -18,7 +18,13 @@ WPILib 2025 (para simulação)
   
   `python -m venv .venv`
 
-  Passo 2:
+  Passo 2: Ative o ambiente virtual com o comando
+  ```
+  .\.venv\Scripts\Activate.ps1 # Para Powershell
+  .\.venv\Scripts\activate.bat # Para CMD
+  ```
+
+  Passo 3:
   Se seu computador não tiver uma placa de vídeo com CUDA Core, rode o comando 
 
   `pip install -r requirements_cpu.txt`
@@ -37,7 +43,7 @@ WPILib 2025 (para simulação)
   .\.venv\Scripts\activate.bat # Para CMD
   ```
 
-  Passo 2:
+  Passo 3:
   Se seu computador tiver uma placa de vídeo com CUDA Core, rode o comando 
 
   `pip install -r requirements-cuda.txt`
