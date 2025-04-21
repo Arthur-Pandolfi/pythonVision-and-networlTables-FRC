@@ -1,5 +1,5 @@
 .venv
 .python-version
+yolov8n.pt
 models
 yolov8n_float16.tflite
-yolov8n.pt

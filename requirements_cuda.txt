@@ -1,0 +1,18 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.1.0+cu118
+torchvision==0.16.0+cu118
+torchaudio==2.1.0+cu118
+
+opencv-python
+ultralytics
+onnx 
+onnx-tf
+tensorflow
+onnx2tf
+onnx_graphsurgeon
+sng4onnx
+tflite_support
+pynetworktables
+tf-keras
+numpy==1.26.4
+

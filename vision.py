@@ -1,4 +1,4 @@
-mode = "torch"
+mode = "tf"
 
 from networktables import NetworkTables
 import time
@@ -6,6 +6,11 @@ import cv2
 
 if mode == "torch":
     from ultralytics import YOLO
+    import torch
+    device = torch.device("cuda:0" if torch.cuda.is_available else "cpu")
+    print("Yolo Device:", device)
+    model = YOLO("yolov8n.pt")
+    model.to(device=device)
 
 elif mode == "tf":
     from tensorflow.lite.python.interpreter import Interpreter
@@ -65,8 +70,6 @@ if mode == "tf":
             break
 
 elif mode == "torch":
-    model = YOLO("yolov8n.pt")
-
     while True:
         start = time.time()
         ret, frame = cap.read()
