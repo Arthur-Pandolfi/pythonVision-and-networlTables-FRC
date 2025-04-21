@@ -21,5 +21,3 @@ if __name__ == "__main__":
         print("Modelo exportando com sucesso!")
     except Exception as e:
         print(f"\033[0mAlgum erro:\033[0m {e}")
-
-        
