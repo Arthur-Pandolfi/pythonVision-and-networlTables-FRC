@@ -98,7 +98,7 @@ Passo 1: Crie um projeto de código em qualquer linguagem de Programação (Java
 Passo 2: Aperta Ctrl + Shift + P no 2025 WPILib VS Code, e escreva "Deploy Robot Code" ou aperte Shift + F5, espere buildar o código e ser carregado a RoboRIO.
 
 Passo 3: 
-No arquivo "vision.py", altere o valor da váriavel RoboRIOIP para "10.TE.AM.1" ou "roborio-9485-frc.local" (linha 19)
+No arquivo "vision.py", altere o valor da váriavel RoboRIOIP para "10.TE.AM.1" ou "roborio-TEAM-frc.local" (linha 19)
 
 - Equipe 1234 -> 10.12.34.1
 - Equipe 123 -> 10.1.23.1
